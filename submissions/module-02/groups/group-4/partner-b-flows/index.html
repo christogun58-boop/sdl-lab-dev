@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VaultFlow Group 4 — Partner B Flows (Create Vault Wizard, Auto-Save Toggles &amp; Withdrawal Alert)</title>
+    <link rel="stylesheet" href="partner-b.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#partner-b-main">Skip to Partner B interactive flows</a>
+
+    <!-- Minimal Partner B Harness Header (Partner A owns the production App Shell & Balance Hero) -->
+    <header class="harness-header">
+      <div class="container harness-header__bar">
+        <div>
+          <span class="badge badge--accent">Group 4 · Partner B (Special)</span>
+          <h1 class="harness-header__title">Automated Savings Vaults — Core Transaction &amp; State Flows</h1>
+          <p class="harness-header__subtitle">
+            Standalone interactive deliverables: Create Vault Wizard, Auto-Save Toggles, and Early-Withdrawal Alert.
+          </p>
+        </div>
+        <div class="btn-row">
+          <button id="open-wizard-btn" type="button" class="btn btn-primary">
+            + Launch Create Vault Wizard
+          </button>
+          <button id="open-withdrawal-btn" type="button" class="btn btn-warning">
+            Trigger Early Withdrawal Alert
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="partner-b-main" class="workspace">
+      <div class="container partner-b-grid">
+        <!-- Deliverable 1: Auto-Save Toggles Panel -->
+        <section class="card" aria-labelledby="autosave-heading">
+          <div class="card__header">
+            <div>
+              <h2 id="autosave-heading" class="card__title">1. Auto-Save Automation Toggles</h2>
+              <p class="card__desc">
+                Configure automated funding rules with live status badges, validation feedback, and all 5 switch states.
+              </p>
+            </div>
+            <span id="autosave-active-count" class="badge badge--accent">2 Active Rules</span>
+          </div>
+
+          <div id="autosave-toast" class="alert alert--success hidden" role="status" aria-live="polite"></div>
+
+          <ul class="toggle-list" role="list">
+            <li class="toggle-row">
+              <div class="toggle-row__info">
+                <div class="toggle-row__title-bar">
+                  <span class="toggle-row__title" id="rule-roundup-label">Card Round-Up Spare Change</span>
+                  <span class="badge badge--accent" data-status-for="roundup">Active</span>
+                </div>
+                <p class="toggle-row__desc">
+                  Automatically sweeps card purchases to the nearest $5 into your primary goal vault.
+                </p>
+              </div>
+              <button
+                type="button"
+                class="switch"
+                role="switch"
+                aria-checked="true"
+                aria-labelledby="rule-roundup-label"
+                data-rule="roundup"
+              >
+                <span class="switch__thumb" aria-hidden="true"></span>
+              </button>
+            </li>
+
+            <li class="toggle-row">
+              <div class="toggle-row__info">
+                <div class="toggle-row__title-bar">
+                  <span class="toggle-row__title" id="rule-payday-label">Payday 10% Smart Split</span>
+                  <span class="badge badge--accent" data-status-for="payday">Active</span>
+                </div>
+                <p class="toggle-row__desc">
+                  Routes 10% of every incoming salary deposit on the 28th directly into locked vaults.
+                </p>
+              </div>
+              <button
+                type="button"
+                class="switch"
+                role="switch"
+                aria-checked="true"
+                aria-labelledby="rule-payday-label"
+                data-rule="payday"
+              >
+                <span class="switch__thumb" aria-hidden="true"></span>
+              </button>
+            </li>
+
+            <li class="toggle-row">
+              <div class="toggle-row__info">
+                <div class="toggle-row__title-bar">
+                  <span class="toggle-row__title" id="rule-weekly-label">Weekly Friday Auto-Sweep ($50)</span>
+                  <span class="badge badge--neutral" data-status-for="weekly">Paused</span>
+                </div>
+                <p class="toggle-row__desc">
+                  Transfers $50 every Friday at 09:00 AM with automatic low-balance overdraft protection.
+                </p>
+              </div>
+              <button
+                type="button"
+                class="switch"
+                role="switch"
+                aria-checked="false"
+                aria-labelledby="rule-weekly-label"
+                data-rule="weekly"
+              >
+                <span class="switch__thumb" aria-hidden="true"></span>
+              </button>
+            </li>
+
+            <li class="toggle-row toggle-row--locked">
+              <div class="toggle-row__info">
+                <div class="toggle-row__title-bar">
+                  <span class="toggle-row__title" id="rule-lockguard-label">Fixed-Term Maturity Guard</span>
+                  <span class="badge badge--neutral">Locked</span>
+                </div>
+                <p class="toggle-row__desc">
+                  Enforced while an active 90-day Fixed Vault holds promotional APY rewards (demonstrates Disabled state).
+                </p>
+              </div>
+              <button
+                type="button"
+                class="switch"
+                role="switch"
+                aria-checked="true"
+                aria-labelledby="rule-lockguard-label"
+                disabled
+              >
+                <span class="switch__thumb" aria-hidden="true"></span>
+              </button>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Deliverable 2 & 3 Trigger Summary + Live Transaction Receipts -->
+        <div class="side-stack">
+          <section class="card" aria-labelledby="wizard-launch-heading">
+            <div class="card__header">
+              <div>
+                <h2 id="wizard-launch-heading" class="card__title">2. Create Vault Wizard &amp; Promo Flow</h2>
+                <p class="card__desc">
+                  3-step guided creation modal with target validation, lock duration APY boosts, promo code verification (<code>SAVEPLUS</code>), and confirmation receipt.
+                </p>
+              </div>
+              <span class="badge badge--neutral">3-Step Modal</span>
+            </div>
+            <div class="btn-row">
+              <button id="open-wizard-btn-card" type="button" class="btn btn-primary">
+                Open Create Vault Wizard
+              </button>
+            </div>
+          </section>
+
+          <section class="card card--warning-outline" aria-labelledby="withdrawal-launch-heading">
+            <div class="card__header">
+              <div>
+                <h2 id="withdrawal-launch-heading" class="card__title">3. Early Withdrawal Alert &amp; Guardrail</h2>
+                <p class="card__desc">
+                  High-friction warning modal for breaking a locked savings vault early—computes penalty fees, forfeited APY bonus, and requires explicit acknowledgement.
+                </p>
+              </div>
+              <span class="badge badge--warning">Safety Gate</span>
+            </div>
+            <div class="btn-row">
+              <button id="open-withdrawal-btn-card" type="button" class="btn btn-warning">
+                Review Early Withdrawal Alert
+              </button>
+            </div>
+          </section>
+
+          <!-- Live Transaction Receipt Feed -->
+          <section class="card" aria-labelledby="receipts-heading">
+            <div class="card__header">
+              <div>
+                <h2 id="receipts-heading" class="card__title">Confirmation Receipts &amp; Badges</h2>
+                <p class="card__desc">Completed wizard creations and withdrawal receipts appear here.</p>
+              </div>
+              <span id="receipt-count-badge" class="badge badge--neutral">0 Events</span>
+            </div>
+            <div id="receipts-feed" class="receipts-feed" aria-live="polite">
+              <p class="card__desc">Run the Create Vault Wizard or Early Withdrawal Alert to generate a verified receipt.</p>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <!-- Collapsible Partner B 5-State Audit Specimen -->
+    <section class="specimen-section" aria-label="Partner B 5-State Specimen">
+      <div class="container">
+        <details class="card">
+          <summary class="specimen-summary">
+            <span>Partner B UI/UX State Matrix — Default, Hover, Focus, Active &amp; Disabled</span>
+            <span class="badge badge--neutral">Expand Matrix</span>
+          </summary>
+          <div class="state-matrix">
+            <div class="state-cell">
+              <span class="state-cell__label">1. Default</span>
+              <button type="button" class="btn btn-primary" tabindex="-1">Create Vault</button>
+              <input type="text" class="form-control" value="Emergency Fund" readonly tabindex="-1" aria-label="Default input" />
+            </div>
+            <div class="state-cell">
+              <span class="state-cell__label">2. Hover</span>
+              <button type="button" class="btn btn-primary is-hover" tabindex="-1">Create Vault</button>
+              <input type="text" class="form-control is-hover" value="Emergency Fund" readonly tabindex="-1" aria-label="Hover input" />
+            </div>
+            <div class="state-cell">
+              <span class="state-cell__label">3. Focus (6.70:1)</span>
+              <button type="button" class="btn btn-primary is-focus" tabindex="-1">Create Vault</button>
+              <input type="text" class="form-control is-focus" value="Emergency Fund" readonly tabindex="-1" aria-label="Focus input" />
+            </div>
+            <div class="state-cell">
+              <span class="state-cell__label">4. Active / Pressed</span>
+              <button type="button" class="btn btn-primary is-active" tabindex="-1">Create Vault</button>
+              <input type="text" class="form-control is-active" value="Emergency Fund" readonly tabindex="-1" aria-label="Active input" />
+            </div>
+            <div class="state-cell">
+              <span class="state-cell__label">5. Disabled</span>
+              <button type="button" class="btn btn-primary" disabled>Locked</button>
+              <input type="text" class="form-control" value="Locked Term" disabled aria-label="Disabled input" />
+            </div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         MODAL 1: 3-Step Create Vault Wizard
+         ==================================================================== -->
+    <div id="wizard-backdrop" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="wizard-title">
+      <div class="modal">
+        <div class="modal__header">
+          <div>
+            <h2 id="wizard-title" class="card__title">Create Automated Savings Vault</h2>
+            <p id="wizard-step-label" class="card__desc">Step 1 of 3 — Goal Name &amp; Target Amount</p>
+          </div>
+          <button type="button" class="btn btn-secondary btn--icon" data-close-modal="wizard" aria-label="Close Create Vault Wizard">
+            &times;
+          </button>
+        </div>
+
+        <ol class="wizard-steps" aria-label="Wizard progress">
+          <li class="wizard-step is-current" data-wizard-indicator="1">1. Goal</li>
+          <li class="wizard-step" data-wizard-indicator="2">2. Schedule</li>
+          <li class="wizard-step" data-wizard-indicator="3">3. Review</li>
+        </ol>
+
+        <div id="wizard-error" class="alert alert--error hidden" role="alert" aria-live="assertive"></div>
+
+        <form id="wizard-form" class="form-stack" novalidate>
+          <!-- Step 1 -->
+          <div class="wizard-pane" data-wizard-pane="1">
+            <div class="field">
+              <label class="field__label" for="vaultName">Vault Name *</label>
+              <input id="vaultName" type="text" class="form-control" placeholder="e.g. Emergency Reserve" required />
+            </div>
+            <div class="field">
+              <label class="field__label" for="vaultTarget">Target Amount (USD) *</label>
+              <input id="vaultTarget" type="number" min="50" step="10" class="form-control" placeholder="2500" required />
+              <p class="field__hint">Minimum savings goal is $50.</p>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="wizard-pane hidden" data-wizard-pane="2">
+            <div class="field">
+              <label class="field__label" for="vaultTerm">Lock Period &amp; APY Tier</label>
+              <select id="vaultTerm" class="form-control">
+                <option value="flex">Flexible Vault — 4.5% APY (No early-break fee)</option>
+                <option value="90d" selected>90-Day Fixed Lock — 7.2% APY (2.5% early-break fee)</option>
+                <option value="180d">180-Day Fixed Lock — 9.0% APY (2.5% early-break fee)</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="vaultCadence">Auto-Save Cadence</label>
+              <select id="vaultCadence" class="form-control">
+                <option value="Weekly ($50)">Weekly ($50)</option>
+                <option value="Bi-Weekly ($125)">Bi-Weekly ($125)</option>
+                <option value="Monthly Payday (10%)">Monthly Payday (10%)</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="promoCode">Promo Boost Code (Optional)</label>
+              <div class="inline-action">
+                <input id="promoCode" type="text" class="form-control" placeholder="Try SAVEPLUS (+0.8% APY)" />
+                <button id="apply-promo-btn" type="button" class="btn btn-secondary">Apply</button>
+              </div>
+              <p id="promo-feedback" class="field__hint"></p>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="wizard-pane hidden" data-wizard-pane="3">
+            <div id="wizard-review-summary" class="review-box"></div>
+            <div class="alert alert--success">
+              <strong>Automated Rule Protection:</strong> Transfers automatically pause if your linked checking account falls below $100.
+            </div>
+          </div>
+
+          <div class="modal__footer">
+            <button id="wizard-back-btn" type="button" class="btn btn-secondary hidden">Back</button>
+            <div class="btn-row">
+              <button id="wizard-next-btn" type="button" class="btn btn-primary">Continue</button>
+              <button id="wizard-submit-btn" type="submit" class="btn btn-primary hidden">Confirm &amp; Create Vault</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- ====================================================================
+         MODAL 2: Early Withdrawal Alert Modal
+         ==================================================================== -->
+    <div id="withdrawal-backdrop" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="withdrawal-title">
+      <div class="modal">
+        <div class="modal__header">
+          <div>
+            <span class="badge badge--warning">Early Withdrawal Warning</span>
+            <h2 id="withdrawal-title" class="card__title" style="margin-top: 8px;">Break Locked Vault Early?</h2>
+          </div>
+          <button type="button" class="btn btn-secondary btn--icon" data-close-modal="withdrawal" aria-label="Close Withdrawal Alert">
+            &times;
+          </button>
+        </div>
+
+        <div class="alert alert--warning">
+          <strong>Vault: House Deposit (90-Day Fixed Lock)</strong>
+          <p style="margin-top: 4px;">
+            38 days remain until maturity. Withdrawing early incurs a <strong>2.5% break fee</strong> and forfeits accrued promotional APY interest.
+          </p>
+        </div>
+
+        <form id="withdrawal-form" class="form-stack" novalidate>
+          <div class="field">
+            <label class="field__label" for="withdrawAmount">Withdrawal Amount (Max $2,000)</label>
+            <input id="withdrawAmount" type="number" min="10" max="2000" step="10" value="500" class="form-control" required />
+          </div>
+
+          <div id="penalty-breakdown" class="review-box"></div>
+
+          <label class="ack-checkbox">
+            <input id="ackPenalty" type="checkbox" />
+            <span>I understand the 2.5% early-break penalty and forfeited APY bonus will be deducted immediately.</span>
+          </label>
+
+          <div class="modal__footer">
+            <button type="button" class="btn btn-secondary" data-close-modal="withdrawal">Keep Vault Locked</button>
+            <button id="confirm-withdrawal-btn" type="submit" class="btn btn-danger" disabled>
+              Confirm Early Withdrawal
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="partner-b.js" defer></script>
+  </body>
+</html>
