@@ -1,0 +1,86 @@
+/* ==========================================================================
+   Group 4: Personal Finance & Automated Savings Vaults — Shared Design Tokens
+   Partners:
+     - Partner A (Bitrus): System Shell, Balance Hero & Savings Vaults Grid
+     - Partner B (Special): Create Vault Wizard, Auto-Save Toggles & Withdrawal Alert
+
+   Standards: 8pt Spatial Grid | 60-30-10 Color Architecture | WCAG AA >= 4.5:1
+   ========================================================================== */
+
+:root {
+  /* ------------------------------------------------------------------------
+     1. 8pt Spatial Grid Scale (4px micro-grid ONLY for tight badge/icon gaps)
+     ------------------------------------------------------------------------ */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 32px;
+  --space-6: 48px;
+  --space-7: 64px;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-pill: 9999px;
+
+  /* ------------------------------------------------------------------------
+     2. 60-30-10 Color Architecture (WCAG AA Verified)
+     ------------------------------------------------------------------------ */
+
+  /* 60% Dominant / Neutral Surfaces & Typography */
+  --vf-canvas: #F8FAFC;
+  --vf-surface: #FFFFFF;
+  --vf-text-primary: #0F172A;      /* 17.85:1 on #FFFFFF */
+  --vf-text-secondary: #475569;    /* 7.58:1 on #FFFFFF */
+
+  /* 30% Secondary Structural Chrome, Cards & Borders */
+  --vf-chrome-bg: #1E293B;
+  --vf-chrome-text: #FFFFFF;       /* 14.63:1 on #1E293B */
+  --vf-structural: #F1F5F9;
+  --vf-structural-text: #334155;   /* 9.45:1 on #F1F5F9 */
+  --vf-structural-hover: #E2E8F0;
+  --vf-border-subtle: #CBD5E1;
+  --vf-border-control: #64748B;    /* 4.76:1 on #FFFFFF */
+
+  /* 10% Accent / High-Emphasis Fintech Emerald */
+  --vf-accent: #047857;            /* 5.48:1 with #FFFFFF */
+  --vf-accent-hover: #065F46;      /* 7.68:1 with #FFFFFF */
+  --vf-accent-active: #064E3B;     /* 9.72:1 with #FFFFFF */
+  --vf-accent-tint: #ECFDF5;
+  --vf-accent-tint-text: #065F46;  /* 7.29:1 on #ECFDF5 */
+  --vf-focus-ring: #1D4ED8;        /* 6.70:1 on #FFFFFF */
+
+  /* Semantic Transaction & Alert States */
+  --vf-warning-bg: #FFFBEB;
+  --vf-warning-border: #B45309;
+  --vf-warning-text: #92400E;      /* 6.84:1 on #FFFBEB */
+  --vf-warning-solid: #B45309;     /* 5.02:1 with #FFFFFF */
+
+  --vf-error-bg: #FEF2F2;
+  --vf-error-border: #B91C1C;
+  --vf-error-text: #991B1B;        /* 7.60:1 on #FEF2F2 */
+  --vf-error-solid: #B91C1C;       /* 6.47:1 with #FFFFFF */
+
+  /* Disabled State Tokens */
+  --vf-disabled-bg: #E2E8F0;
+  --vf-disabled-border: #94A3B8;
+  --vf-disabled-text: #475569;     /* 6.15:1 on #E2E8F0 */
+
+  /* Typography */
+  --vf-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --vf-font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* ========================================================================
+     CONTROLLED OVERLAP ZONE — Component Surface & Elevation Tokens
+     Both Partner A (Bitrus) & Partner B (Special) extend this block for the
+     mandatory Module 02 peer Git merge conflict exercise.
+     ======================================================================== */
+  --vf-modal-backdrop: rgba(15, 23, 42, 0.64);
+  --vf-modal-max-width: 560px;
+  --vf-wizard-step-size: 32px;
+  --vf-toggle-track-off: #64748B;
+  --vf-toggle-track-on: #047857;
+  --vf-toggle-thumb: #FFFFFF;
+  --vf-alert-elevation: 0 16px 32px rgba(15, 23, 42, 0.16);
+}
