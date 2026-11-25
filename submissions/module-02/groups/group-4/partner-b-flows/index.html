@@ -13,18 +13,18 @@
     <header class="harness-header">
       <div class="container harness-header__bar">
         <div>
-          <span class="badge badge--accent">Group 4 · Partner B (Special)</span>
-          <h1 class="harness-header__title">Automated Savings Vaults — Core Transaction &amp; State Flows</h1>
+          <span class="badge badge--accent">VAULT · Automated Savings</span>
+          <h1 class="harness-header__title">Automated Savings Vaults</h1>
           <p class="harness-header__subtitle">
-            Standalone interactive deliverables: Create Vault Wizard, Auto-Save Toggles, and Early-Withdrawal Alert.
+            Manage your automatic deposit rules, create new savings goals, and review early withdrawal details.
           </p>
         </div>
         <div class="btn-row">
           <button id="open-wizard-btn" type="button" class="btn btn-primary">
-            + Launch Create Vault Wizard
+            + Create New Vault
           </button>
           <button id="open-withdrawal-btn" type="button" class="btn btn-warning">
-            Trigger Early Withdrawal Alert
+            Withdraw Funds Early
           </button>
         </div>
       </div>
@@ -36,9 +36,9 @@
         <section class="card" aria-labelledby="autosave-heading">
           <div class="card__header">
             <div>
-              <h2 id="autosave-heading" class="card__title">1. Auto-Save Automation Toggles</h2>
+              <h2 id="autosave-heading" class="card__title">Auto-Save Rules</h2>
               <p class="card__desc">
-                Configure automated funding rules with live status badges, validation feedback, and all 5 switch states.
+                Turn automatic deposit rules on or off anytime to keep your savings goals growing on schedule.
               </p>
             </div>
             <span id="autosave-active-count" class="badge badge--accent">2 Active Rules</span>
@@ -120,7 +120,7 @@
                   <span class="badge badge--neutral">Locked</span>
                 </div>
                 <p class="toggle-row__desc">
-                  Enforced while an active 90-day Fixed Vault holds promotional APY rewards (demonstrates Disabled state).
+                  Locked automatically while an active 90-day Fixed Vault is earning promotional APY rewards.
                 </p>
               </div>
               <button
@@ -142,16 +142,16 @@
           <section class="card" aria-labelledby="wizard-launch-heading">
             <div class="card__header">
               <div>
-                <h2 id="wizard-launch-heading" class="card__title">2. Create Vault Wizard &amp; Promo Flow</h2>
+                <h2 id="wizard-launch-heading" class="card__title">Create a Savings Vault</h2>
                 <p class="card__desc">
-                  3-step guided creation modal with target validation, lock duration APY boosts, promo code verification (<code>SAVEPLUS</code>), and confirmation receipt.
+                  Set a savings target, choose your lock term and APY boost (promo code <code>SAVEPLUS</code>), and schedule automatic deposits.
                 </p>
               </div>
-              <span class="badge badge--neutral">3-Step Modal</span>
+              <span class="badge badge--neutral">3-Step Setup</span>
             </div>
             <div class="btn-row">
               <button id="open-wizard-btn-card" type="button" class="btn btn-primary">
-                Open Create Vault Wizard
+                Create Savings Vault
               </button>
             </div>
           </section>
@@ -159,16 +159,19 @@
           <section class="card card--warning-outline" aria-labelledby="withdrawal-launch-heading">
             <div class="card__header">
               <div>
-                <h2 id="withdrawal-launch-heading" class="card__title">3. Early Withdrawal Alert &amp; Guardrail</h2>
+                <h2 id="withdrawal-launch-heading" class="card__title">Early Withdrawal Alert</h2>
                 <p class="card__desc">
-                  High-friction warning modal for breaking a locked savings vault early—computes penalty fees, forfeited APY bonus, and requires explicit acknowledgement.
+                  Need funds before maturity? Preview early-break fees and how a withdrawal affects your savings goal before confirming.
                 </p>
               </div>
-              <span class="badge badge--warning">Safety Gate</span>
+              <span class="badge badge--warning">Locked Vault</span>
+            </div>
+            <div class="review-box" style="padding: var(--space-2) var(--space-3); margin-bottom: var(--space-3); font-size: 0.875rem; font-weight: 600; color: var(--vf-structural-text);">
+              Active Vault: Emergency Fund &bull; $2,400.00 &bull; 42 days left
             </div>
             <div class="btn-row">
               <button id="open-withdrawal-btn-card" type="button" class="btn btn-warning">
-                Review Early Withdrawal Alert
+                Review Early Withdrawal
               </button>
             </div>
           </section>
@@ -177,13 +180,13 @@
           <section class="card" aria-labelledby="receipts-heading">
             <div class="card__header">
               <div>
-                <h2 id="receipts-heading" class="card__title">Confirmation Receipts &amp; Badges</h2>
-                <p class="card__desc">Completed wizard creations and withdrawal receipts appear here.</p>
+                <h2 id="receipts-heading" class="card__title">Recent Vault Activity</h2>
+                <p class="card__desc">Your latest vault creations and withdrawal confirmations appear here.</p>
               </div>
               <span id="receipt-count-badge" class="badge badge--neutral">0 Events</span>
             </div>
             <div id="receipts-feed" class="receipts-feed" aria-live="polite">
-              <p class="card__desc">Run the Create Vault Wizard or Early Withdrawal Alert to generate a verified receipt.</p>
+              <p class="card__desc">No recent activity yet. Create a new vault or request an early withdrawal to view your confirmation receipt.</p>
             </div>
           </section>
         </div>
@@ -191,9 +194,12 @@
     </main>
 
     <!-- Collapsible Partner B 5-State Audit Specimen -->
-    <section class="specimen-section" aria-label="Partner B 5-State Specimen">
+    <section class="specimen-section" aria-label="Design System Reference — Partner B 5-State Specimen">
       <div class="container">
-        <details class="card">
+        <p style="margin: 0 0 var(--space-2); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--vf-text-secondary);">
+          Design System Reference
+        </p>
+        <details class="card" style="border-style: dashed; border-color: var(--vf-border-control);">
           <summary class="specimen-summary">
             <span>Partner B UI/UX State Matrix — Default, Hover, Focus, Active &amp; Disabled</span>
             <span class="badge badge--neutral">Expand Matrix</span>
