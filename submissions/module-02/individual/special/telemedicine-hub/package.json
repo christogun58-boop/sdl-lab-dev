@@ -1,0 +1,23 @@
+{
+  "name": "telemedicine-hub",
+  "version": "1.0.0",
+  "description": "Telemedicine Triage & Patient Booking Hub with red-flag detection, urgency scoring, and WCAG AA mobile-first UI",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js"
+  },
+  "keywords": [
+    "telemedicine",
+    "triage",
+    "healthcare",
+    "booking",
+    "express",
+    "wcag-aa"
+  ],
+  "author": "Special",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
